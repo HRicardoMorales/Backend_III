@@ -11,8 +11,6 @@ import mocksRouter from './routes/mocks.router.js';
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// ✅ Recomendado: configurar MONGO_URL en variables de entorno (por ejemplo, Mongo Atlas)
-// Si no está, intentará usar Mongo local.
 const MONGO_URL = process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/adoptme';
 
 mongoose.connect(MONGO_URL)
@@ -28,7 +26,7 @@ app.use('/api/pets', petsRouter);
 app.use('/api/adoptions', adoptionsRouter);
 app.use('/api/sessions', sessionsRouter);
 
-// ✅ Router de mocks
+
 app.use('/api/mocks', mocksRouter);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
